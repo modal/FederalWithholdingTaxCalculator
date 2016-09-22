@@ -1,4 +1,5 @@
 from itertools import izip
+import sys
 ##############################################################################
 #US Federal Tax Withholding Calculator
 #http://payroll.wsu.edu/cgi-bin/withhold2016.cgi
@@ -13,6 +14,28 @@ from itertools import izip
 #TODO
 #Create tkinter interface
 ##############################################################################
+USAGE = """
+Command line Use:
+
+fwt.py gross_pay marital_status pay_period allowances
+
+------------------------------------------------------------------------------
+
+Marital Status Options
+    single
+    married
+
+Pay Period Options
+    weekly
+    biweekly
+    semimonthly
+    quarterly
+    semiannually
+    annually
+    daily
+"""
+
+
 Allowance = {   "weekly"        :     77.90,
                 "biweekly"      :    155.50,
                 "semimonthly"   :    168.80,
@@ -48,9 +71,18 @@ bracket =   {  "single"         :
 mstatus = "married"
 pay_period = "semimonthly"
 gross = 8000.00
-Allowance_cnt = 8
+allowance_cnt = 8
 
-postallowance = gross - Allowance[pay_period] * 8
+if 5 != len(sys.argv):
+    print(USAGE)
+    sys.exit()
+else:
+    gross   = float(sys.argv[1])
+    mstatus = sys.argv[2].lower()
+    pay_period = sys.argv[3].lower()
+    allowance_cnt = int(sys.argv[4])
+
+postallowance = gross - Allowance[pay_period] * allowance_cnt
 #print "After allowances", postallowance
 
 tax = 0
