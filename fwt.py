@@ -57,15 +57,15 @@ bracket =   {  "single"         :
                 "annually"      :   "TBD",
                 "daily"         :   "TBD"},
 
-                 "married"      :
-            {  "weekly"         :   "TBD",
-                "biweekly"      :   "TBD",
+                "married"       :
+            {   "weekly"        :   [164, 521, 1613, 3086, 4615, 8113, 9144],
+                "biweekly"      :   [329, 1042, 3225, 6171, 9231, 16227, 18288],
                 "semimonthly"   :   [356, 1129, 3494, 6685, 10000, 17579, 19813],
-                "monthly"       :   "TBD",
-                "quarterly"     :   "TBD",
-                "semiannually"  :   "TBD",
-                "annually"      :   "TBD",
-                "daily"         :   "TBD"}
+                "monthly"       :   [713, 2258, 6988, 13371, 20000, 35158, 39625],
+                "quarterly"     :   [2138, 6775, 20963, 40113, 60000, 105475, 118875],
+                "semiannually"  :   [7275, 13550, 41925, 80225, 120000, 210950, 237750],
+                "annually"      :   [8550, 27100, 83850, 160450, 240000, 421900, 475500],
+                "daily"         :   [32.90, 104.20, 322.50, 617.10, 923.10, 1622.70, 1828.80]}
             }
 ##############################################################################
 mstatus = "married"
@@ -75,7 +75,7 @@ allowance_cnt = 8
 
 if 5 != len(sys.argv):
     print(USAGE)
-    sys.exit()
+    #sys.exit()
 else:
     gross   = float(sys.argv[1])
     mstatus = sys.argv[2].lower()
