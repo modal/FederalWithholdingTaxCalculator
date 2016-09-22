@@ -1,4 +1,4 @@
-from itertools import izip
+from __future__ import print_function
 import sys
 ##############################################################################
 #US Federal Tax Withholding Calculator
@@ -102,18 +102,17 @@ else:
     allowance_cnt = int(sys.argv[4])
 
 postallowance = gross - Allowance[pay_period] * allowance_cnt
-#print "After allowances", postallowance
 
 tax = 0
-for r, b in izip(rate[::-1], bracket[mstatus][pay_period][::-1]):
+for r, b in zip(rate[::-1], bracket[mstatus][pay_period][::-1]):
     btax=0.0
     if postallowance > b:
         btax += (postallowance - b) * r/100.0
         postallowance = b
-    print "{0}% bracket =  {1:10.2f}".format(r, btax)
+    print("{0}% bracket =  {1:10.2f}".format(r, btax))
     tax += btax
 
-print "2016 Federal Withholding Tax= %6.2f" % (tax)
+print("2016 Federal Withholding Tax= %6.2f" % (tax))
 
 if __name__ == "__main__":
     pass
